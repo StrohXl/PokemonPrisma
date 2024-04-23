@@ -11,3 +11,4 @@ app.get("/", (req, res) => {
 app.listen(port, () =>
   console.log("Servidor corriendo en http://localhost:" + port)
 );
+export default app
