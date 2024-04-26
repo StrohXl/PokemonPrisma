@@ -12,6 +12,8 @@ const validatePokemon = [
   check("types")
     .isArray({ min: 1, max: 2 })
     .withMessage("Debe de tener minimo 1 tipo y maximo 2"),
+  check("generation").isNumeric().withMessage("Generation is type int"),
+  check("generation").notEmpty().withMessage("Generation is required"),
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

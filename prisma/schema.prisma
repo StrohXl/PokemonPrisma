@@ -11,13 +11,21 @@ datasource db {
 }
 
 model Pokemon {
-  id     Int    @id @default(autoincrement())
-  name   String @unique
-  number Int    @unique
-  type   Type[]
+  id           Int        @id @default(autoincrement())
+  name         String     @unique
+  number       Int        @unique
+  type         Type[]
+  Generation   Generation @relation(fields: [generationId], references: [id])
+  generationId Int        @default(1)
 }
 
 model Type {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  pokemon Pokemon[]
+}
+
+model Generation {
   id      Int       @id @default(autoincrement())
   name    String    @unique
   pokemon Pokemon[]
